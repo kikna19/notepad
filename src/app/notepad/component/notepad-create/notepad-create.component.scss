@@ -1,0 +1,97 @@
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: calc(100% - 1rem);
+
+  .save{
+    position: absolute;
+    left: 15rem;
+    top: .75rem;
+    background: #5a5757;
+    span{
+      z-index: -1;
+    }
+  }
+
+  &__form {
+    width: 100%;
+    height: 95%;
+    background: url("https://getwallpapers.com/wallpaper/full/2/a/5/507936.jpg") center no-repeat;
+    background-size: cover;
+    color: #423F3E;
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    width: calc(100% - 16rem);
+    height: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    color: white;
+    white-space: pre-wrap;
+    background: transparent;
+    margin-top: 1rem;
+    text-transform: lowercase;
+
+  }
+
+  &__text::placeholder {
+    font-style: italic;
+    font-family: "Noto Sans Old Italic";
+  }
+
+}
+
+@media (max-width: 1000px) {
+  .content {
+    .save{
+      top: 1.05rem;
+      left: 14rem;
+    }
+    &__text {
+      width: calc(100% - 14rem);
+    }
+  }
+
+}
+@media (max-width: 600px) {
+  .content {
+    .save{
+      left: 12rem;
+    }
+    &__text {
+      width: calc(100% - 10rem);
+    }
+    &__text::placeholder{
+      font-size: 1rem;
+    }
+  }
+
+}
+@media (max-width: 500px) {
+  .content {
+    .save{
+      left: 9rem;
+    }
+    &__text {
+      width: calc(100% - 5rem);
+    }
+  }
+
+}
+
+@media (max-width: 400px) {
+  .content {
+    .save{
+      left: 8rem;
+    }
+    &__text {
+      width: calc(100% - 2rem);
+    }
+  }
+
+}
+

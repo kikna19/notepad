@@ -1,0 +1,179 @@
+.header {
+  position: absolute;
+  left: 14rem;
+  top: .75rem;
+
+  button {
+    color: white;
+    background: #5a5757;
+    margin-left: 1rem;
+  }
+
+  button:disabled {
+    opacity: .1;
+  }
+
+}
+
+.item {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-height: 100%;
+  word-break: break-word;
+  white-space: pre-wrap;
+
+
+  &__time {
+    color: #423F3E;
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    position: relative;
+    display: block;
+    text-align: start;
+    width: calc(100% - 16rem);
+    height: auto;
+    color: white;
+    line-height: 1.5rem;
+    margin-top: 2rem;
+    margin-left: 8rem;
+    overflow: hidden;
+    text-transform: lowercase;
+  }
+
+  #note {
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    left: calc(50% - 7.5rem);
+    top: 35rem;
+    width: 15rem;
+    height: 4rem;
+    background: #423F3E;
+    z-index: 20;
+
+    button {
+      font-family: "Andale Mono";
+      font-size: .8rem;
+    }
+
+    button:first-letter {
+      text-transform: uppercase;
+    }
+
+    button:nth-child(1) {
+      background: #556E53;
+    }
+
+    button:nth-child(2) {
+      background: #AF0404;
+    }
+  }
+}
+
+
+#lock {
+  position: absolute;
+  display: none;
+  top: -30rem;
+  left: calc(50% - 10rem);
+  width: 20rem;
+  height: 20rem;
+  background: #2B2B2B;
+  border-radius: .5rem;
+
+
+  #lockBtn {
+    text-transform: capitalize;
+    background: #AF0404;
+    font-family: "Andale Mono";
+  }
+
+  #lockBtn:disabled {
+    pointer-events: none;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 70%;
+
+    input {
+      width: 10rem;
+      height: 2rem;
+      margin: 1rem;
+      outline: none;
+      border-radius: .5rem;
+      border: none;
+      padding-left: .5rem;
+    }
+
+    input::placeholder {
+      font-style: italic;
+    }
+
+    input:focus {
+      -webkit-box-shadow: 0 0 .5rem .1rem #27A0FF;
+      box-shadow: 0 0 .5rem .1rem #27A0FF;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .header {
+    left: 13rem;
+    top: 1rem;
+  }
+  .item {
+    &__text {
+      margin-left: 7rem;
+      width: calc(100% - 14rem);
+    }
+  }
+
+}
+
+@media (max-width: 600px) {
+  .header {
+    left: 11rem;
+  }
+  .item {
+    &__text {
+      margin-left: 5rem;
+      width: calc(100% - 10rem);
+    }
+  }
+
+}
+
+@media (max-width: 500px) {
+  .header {
+    left: 8rem;
+  }
+  .item {
+    &__text {
+      margin-left: 2.5rem;
+      width: calc(100% - 5rem);
+    }
+  }
+
+}
+
+@media (max-width: 400px) {
+  .header {
+    left: 7rem;
+  }
+  .item {
+    &__text {
+      margin-left: 1rem;
+      width: calc(100% - 2rem);
+    }
+  }
+
+}

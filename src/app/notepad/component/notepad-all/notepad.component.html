@@ -1,0 +1,70 @@
+<mat-drawer-container class="notes">
+  <mat-drawer #drawer class="notes__side" [(opened)]="sideNav" mode="over">
+    <div id="noNotes" *ngIf="noNotes == 0">no notes</div>
+    <div *ngFor="let item of notes$ | async; index as i" id="note" #noteItems>
+      <div
+        *ngIf="item.locked"
+        class="notes__item"
+        [routerLink]="[{outlets: {primary: null, item: ['note', i]}}]">
+        <div>{{item.note}}</div>
+        <div>{{item.time | dateTimeFormat}}
+          <span class="material-icons" id="lockNote">lock</span>
+          <span id="lockText">Locked</span>
+        </div>
+      </div>
+      <div
+        *ngIf="!item.locked"
+        class="notes__item"
+        [routerLink]="[{outlets: {primary: null, item: ['note', i]}}]">
+        <div>{{item.note}}</div>
+        <div>{{item.time | dateTimeFormat}}</div>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-drawer>
+  <div class="notes__content">
+    <div class="content-controls">
+      <div class="content-btns">
+        <button
+          mat-mini-fab
+          (click)="drawer.toggle()"
+          [routerLink]="[{outlets: {primary: null, item: ['note', 'id']}}]">
+          <i class="material-icons">menu</i>
+        </button>
+        <button
+          mat-mini-fab
+          [routerLink]="[{outlets: {primary: 'create', item: null}}]">
+          <i class="material-icons">add_circle_outline</i>
+        </button>
+      </div>
+      <div class="content-controls__search">
+        <input
+          #noteSearch
+          type="text">
+        <button
+          id="logOut"
+          (click)="logOut()"
+          mat-mini-fab>
+          <i class="material-icons">logout</i>
+        </button>
+        <div *ngIf="noteSearch.value" class="box">
+          <div *ngIf="searchedNote.length; else noItem">
+            <div *ngFor="let item of searchedNote" class="box__items">
+              <p (click)="selectNote(item)">{{item}}</p>
+              <mat-divider></mat-divider>
+            </div>
+          </div>
+          <ng-template #noItem>
+            <div class="box__no-items">nothing to show</div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="content-item">
+      <router-outlet></router-outlet>
+      <router-outlet name="item"></router-outlet>
+    </div>
+  </div>
+</mat-drawer-container>
+
+

@@ -1,0 +1,42 @@
+<mat-toolbar-row class="register">
+  <form [formGroup]="form" class="register__form">
+    <h2 class="header">register</h2>
+    <input
+      (input)="clearError($event)"
+      class="email text"
+      placeholder="email"
+      type="email" formControlName="email"
+      [(ngModel)]="email">
+    <mat-error *ngIf="control.email.errors?.required && control.email.dirty">Email is required</mat-error>
+    <mat-error *ngIf="control.email.errors?.email">Enter email</mat-error>
+    <input
+      class="password text"
+      placeholder="password"
+      type="password"
+      formControlName="password"
+      [(ngModel)]="password">
+    <mat-error *ngIf="control.password.errors?.required && control.password.dirty">Password is required</mat-error>
+    <mat-error *ngIf="control.password.errors?.minLength && control.password.dirty">Password min length is 6</mat-error>
+    <mat-error *ngIf="control.password.errors?.maxLength && control.password.dirty">Password max length is 20
+    </mat-error>
+    <mat-error id="error">{{err | error}}</mat-error>
+    <button
+      [disabled]="form.invalid"
+      class="btn"
+      #registerBtn
+      mat-button
+      (click)="register()">
+      register
+    </button>
+    <div class="login">
+      <h5>
+        have an account?
+      </h5>
+      <button
+        mat-button
+        (click)="login()">
+        sign in
+      </button>
+    </div>
+  </form>
+</mat-toolbar-row>

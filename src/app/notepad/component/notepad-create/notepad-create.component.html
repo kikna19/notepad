@@ -1,0 +1,22 @@
+<mat-toolbar-row class="content">
+  <button
+    #saveBtn
+    class="save"
+    id="saveBtn"
+    mat-mini-fab
+    [disabled]="form.invalid">
+  <i id="saveIcon" class="material-icons">add_task</i>
+  </button>
+  <form [formGroup]="form" class="content__form">
+    <div *ngIf="(noteValue | json) == '{}'"> {{time$ | async}}</div>
+    <div *ngIf="noteValue"> {{noteValue.time}}</div>
+    <textarea
+      #formElement
+      class="content__text"
+      formControlName="text"
+      placeholder="what's up?"
+      [(ngModel)]="textArea">
+      </textarea>
+  </form>
+</mat-toolbar-row>
+

@@ -1,0 +1,29 @@
+<mat-toolbar-row class="blocked">
+  <div class="blocked__img">
+    <img src="https://static.thenounproject.com/png/18798-200.png">
+  </div>
+  <form [formGroup]="form" class="blocked__form">
+    <input
+      (input)="onInput($event)"
+      (keypress)="numbersOnly($event)"
+      ngModel
+      maxlength="4"
+      type="password"
+      placeholder="code"
+      formControlName="pin">
+  </form>
+  <div class="blocked__btn">
+    <button
+      [disabled]="showBtn"
+      (click)="openNote()"
+      mat-button>
+      open
+    </button>
+    <button
+      [disabled]="showBtn"
+      (click)="unlockNote()"
+      mat-button>
+      unlock
+    </button>
+  </div>
+</mat-toolbar-row>

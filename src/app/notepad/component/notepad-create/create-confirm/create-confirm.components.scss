@@ -1,0 +1,59 @@
+.confirm {
+  display: block;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+
+  .content {
+    &__text:first-letter {
+      text-transform: capitalize;
+    }
+
+    &__text {
+      font-family: "Andale Mono";
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    &__btn:first-letter {
+      text-transform: capitalize;
+    }
+
+    &__btn {
+      font-family: "Andale Mono";
+    }
+
+    &__btn:nth-child(1) {
+      background: #556E53;
+      margin-right: 1rem;
+    }
+
+
+    &__btn:nth-child(2) {
+      margin-left: 1rem;
+      background: #AF0404;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .content {
+    &__text {
+      font-size: 1rem !important;
+    }
+
+    &__btn {
+      font-size: .7rem;
+    }
+
+    &__btn:nth-child(1) {
+      margin-right: .5rem !important;
+    }
+
+
+    &__btn:nth-child(2) {
+      margin-left: .5rem !important;
+    }
+  }
+
+}

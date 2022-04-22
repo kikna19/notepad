@@ -1,0 +1,40 @@
+<div class="confirm">
+  <figure *ngIf="!data.note" class="content">
+    <div>
+      <h3 class="content__text">save note?</h3>
+    </div>
+    <div>
+      <button
+        class="content__btn"
+        (click)="create()"
+        mat-button>
+        yes
+      </button>
+      <button
+        class="content__btn"
+        (click)="cancel()"
+        mat-button>
+        keep writing
+      </button>
+    </div>
+  </figure>
+  <figure *ngIf="data.note" class="content">
+    <div>
+      <h3 class="content__text">update note?</h3>
+    </div>
+    <div>
+      <button
+        class="content__btn"
+        (click)="update()"
+        mat-button>
+        yes
+      </button>
+      <button
+        class="content__btn"
+        (click)="cancel()"
+        mat-button>
+        keep writing
+      </button>
+    </div>
+  </figure>
+</div>

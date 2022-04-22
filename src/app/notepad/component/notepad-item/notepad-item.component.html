@@ -1,0 +1,77 @@
+<div class="header" *ngIf="note">
+  <button
+    [disabled]="note?.locked"
+    (click)="updateNote()"
+    mat-mini-fab>
+    <i class="material-icons">create</i>
+  </button>
+  <button
+    [disabled]="note?.locked"
+    (click)="delete$.next(true)"
+    mat-mini-fab>
+    <i class="material-icons">delete</i>
+  </button>
+  <button
+    id="noteBtn"
+    [disabled]="note?.locked"
+    (click)="lockOpen()"
+    mat-mini-fab>
+    <i id="noteIcon" class="material-icons">lock</i>
+  </button>
+</div>
+
+<mat-toolbar-row class="item" *ngIf="!note?.locked">
+  <div class="item__time">
+    <h5>{{note?.time}}</h5>
+  </div>
+  <div class="item__text">
+    <p>{{note?.note}}</p>
+  </div>
+  <div *ngIf="note">
+    <div id="note" *ngIf="delete$ | async">
+      <button
+        mat-button
+        (click)="deleteNote(note?.key)">
+        delete note
+      </button>
+      <button
+        mat-button
+        (click)="delete$.next(false)">
+        no
+      </button>
+    </div>
+  </div>
+</mat-toolbar-row>
+<div #lockN id="lock">
+  <form [formGroup]="form" #lockForm>
+    <input
+      #pin
+      (keypress)="numbersOnly($event)"
+      ngModel
+      maxlength="4"
+      placeholder="code"
+      formControlName="pin"
+      type="password">
+    <input
+      #confirmPin
+      ngModel
+      maxlength="4"
+      (keypress)="numbersOnly($event)"
+      placeholder="confirm code"
+      formControlName="confirmPin"
+      type="password">
+  </form>
+  <button
+    id="lockBtn"
+    [disabled]="form.invalid"
+    (click)="lockNote(note?.key)"
+    mat-button>
+    lock
+  </button>
+</div>
+<locked
+  [note]="note"
+  (open)="openNote($event)"
+  (unlock)="unlockNote($event)"
+  *ngIf="note?.locked">
+</locked>

@@ -1,0 +1,297 @@
+@mixin flexbox($align, $justify, $direction) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+.notes {
+  display: block;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  background: url("https://getwallpapers.com/wallpaper/full/2/a/5/507936.jpg") center no-repeat;
+  background-size: cover;
+
+  &__side {
+    @include flexbox(flex-start, flex-start, column);
+    width: 15rem;
+    height: 100%;
+    background: #171717;
+
+  }
+
+  #noNotes {
+    margin: 2rem 5rem;
+    color: white;
+    text-transform: capitalize;
+    font-family: "Andale Mono";
+  }
+
+  #note {
+    width: calc(100% - 2rem);
+    padding: 0 1rem 0 1rem;
+  }
+
+
+  &__item {
+    position: relative;
+    display: block;
+    height: 3rem;
+    padding: .5rem 1rem 0 0;
+    cursor: pointer;
+    color: white;
+    outline: none;
+
+
+    div:nth-child(1) {
+      font-size: 1rem;
+      font-family: Verdana;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-transform: lowercase;
+    }
+
+    div:nth-child(2) {
+      font-family: Verdana;
+      font-size: .8rem;
+      margin-top: .5rem;
+
+      #lockText {
+        color: #5a5757;
+        margin-left: .5rem;
+      }
+
+      #lockNote {
+        position: absolute;
+        top: .5rem;
+        right: 0;
+        font-size: .9rem;
+      }
+    }
+
+  }
+
+  ::ng-deep .mat-divider {
+    margin-top: .4rem;
+    border-top-color: #423F3E;
+  }
+
+
+
+  &__content {
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: calc(100% - 4rem);
+
+    .content-controls {
+      position: relative;
+      @include flexbox(center, space-between, row);
+      padding: 0 9.5rem 0 7rem;
+      width: calc(100% - 16.5rem);
+      height: 4rem;
+      background: #2B2B2B;
+      border-bottom: .1rem solid black;
+
+      button {
+        margin-left: 1rem;
+        color: white;
+        background: #5a5757;
+      }
+
+      &__search {
+        #logOut {
+          position: absolute;
+          top: .8rem;
+          right: 7rem;
+        }
+
+        input {
+          width: 12.2rem;
+          height: 2.2rem;
+          margin-right: 1rem;
+          background-color: #5a5757;
+          outline: none;
+          color: white;
+          font-size: 1rem;
+          background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/VisualEditor_-_Icon_-_Search-big_-_white.svg/1200px-VisualEditor_-_Icon_-_Search-big_-_white.svg.png");
+          background-position: .5rem .3rem;
+          background-repeat: no-repeat;
+          background-size: 1.8rem;
+          padding-left: 2.5rem;
+          border: none;
+          border-radius: .5rem;
+          text-transform: lowercase;
+        }
+
+        input:focus {
+          -webkit-box-shadow: 0 0 .5rem .1rem #27A0FF;
+          box-shadow: 0 0 .5rem .1rem #27A0FF;
+        }
+
+        .box {
+          position: absolute;
+          top: 4rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: scroll;
+          width: 15rem;
+          height: 15rem;
+          color: white;
+          background: #171717;
+          border-radius: .5rem;
+          z-index: 10;
+
+          &__items {
+            display: block;
+            width: 12rem;
+            cursor: pointer;
+            margin: 1rem;
+            text-transform: lowercase;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            font-family: Verdana;
+            font-size: .9rem;
+          }
+
+          &__no-items:first-letter {
+            text-transform: capitalize;
+          }
+
+          &__no-items {
+            font-family: "Andale Mono";
+            font-size: 1.1rem;
+
+          }
+        }
+
+      }
+    }
+
+
+    .content-time {
+      margin: 1rem 0 1rem 0;
+    }
+
+    .content-item {
+      padding-top: 1rem;
+      width: 100%;
+      height: 95%;
+      background: url("https://getwallpapers.com/wallpaper/full/2/a/5/507936.jpg") center no-repeat;
+      background-size: cover;
+    }
+
+  }
+
+}
+
+@media (max-width: 1000px) {
+  .notes {
+    &__content {
+      height: calc(100% - 8rem);
+
+      .content-controls {
+        @include flexbox(flex-start, center, column);
+        height: 8rem;
+
+        div:nth-child(1) {
+
+          button:nth-child(1) {
+            margin-left: 0;
+          }
+        }
+
+        div:nth-child(2) {
+          margin-top: 1rem;
+          input{
+            width: 14rem;
+          }
+
+          .box{
+            top: 8rem;
+            width: 16.8rem;
+          }
+
+          #logOut {
+            top: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .notes {
+    &__content {
+      .content-controls {
+        width: calc(100% - 12.5rem);
+        padding: 0 7.5rem 0 5rem;
+
+        div:nth-child(2) {
+          #logOut {
+            right: 5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 500px) {
+  .notes {
+    &__content {
+      .content-controls {
+        width: calc(100% - 6.5rem);
+        padding: 0 4.5rem 0 2rem;
+
+        div:nth-child(2) {
+          #logOut {
+            right: 2rem;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+@media (max-width: 400px) {
+  .notes {
+    &__content {
+      .content-controls {
+        width: calc(100% - 4.5rem);
+        padding: 0 3.5rem 0 1rem;
+
+        div:nth-child(2) {
+          #logOut {
+            right: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
